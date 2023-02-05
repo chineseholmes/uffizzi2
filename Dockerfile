@@ -12,7 +12,7 @@ RUN set -ex \
         && chmod +x /xray.sh
 	
 ENV PATH /usr/bin/xray:$PATH
-ENV PORT 8888
+ENV PORT 80
 ENV TZ=Asia/Shanghai
 VOLUME /etc/xray
 WORKDIR /etc/xray
