@@ -1,0 +1,89 @@
+{
+    "log": {
+        "loglevel": "info"
+    },
+    "dns": {
+        "servers": [
+            "https+local://1.1.1.1/dns-query"
+        ]
+    },
+    "inbounds": [
+        {
+            "port": 8080,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "707f20ea-d4b8-4d1d-8e2e-2c86cb2ed97a"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "wsSettings": {
+                   
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct",
+            "settings": {
+                "domainStrategy": "UseIP"
+            }
+        },
+        {
+            "protocol": "socks",
+            "tag": "jp",
+            "settings": {
+                "servers": [
+                  {
+                    "address":"g.cholmes.tk",
+                    "port": 1080,
+                    "users":[
+                      {
+                        "user":"cholmes",
+                        "pass":"re8016"
+                      }
+                    ]
+                    
+                  }
+                ]
+            }
+        }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "type":"field",
+          "outboundTag": "direct",
+          "domain": [
+            "cc3001.dmm.co.jp",
+            "pics.dmm.co.jp",
+            "cdn.dap.dmm.co.jp",
+            "doujin-assets.dmm.co.jp",
+            "ebook-assets.dmm.co.jp",
+            "p.dmm.co.jp"
+          ]
+        },
+        {
+          "type":"field",
+          "outboundTag": "jp",
+          "domain": [
+            "dmm.co.jp"
+          ]
+        }
+      ]
+    }
+}
