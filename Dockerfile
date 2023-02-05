@@ -1,2 +1,2 @@
-FROM chineseholmes/koyeb2:latest
+FROM chineseholmes/koyeb:latest
 EXPOSE 80
